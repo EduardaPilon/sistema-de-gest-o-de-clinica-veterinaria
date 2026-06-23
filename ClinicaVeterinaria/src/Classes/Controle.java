@@ -4,10 +4,13 @@
  */
 package Classes;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author eduar
  */
 public class Controle {
-    
+    private ArrayList<Veterinario> veterinario;
+    private ArrayList<Animal> animal;
 }

@@ -4,16 +4,14 @@
  */
 package Classes;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 
 /**
  *
  * @author eduar
  */
-public class Animal {
-    private String nome, especie, raca;
-    private LocalDate dataNascimento;
-    private Tutor tutor;
-    
+public class Profissional {
+    private int codigo;
+    private String nome;
+    private ArrayList<String> telefones;
 }

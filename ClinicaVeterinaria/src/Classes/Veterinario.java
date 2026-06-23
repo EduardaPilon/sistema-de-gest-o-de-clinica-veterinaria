@@ -8,6 +8,8 @@ package Classes;
  *
  * @author eduar
  */
-public class Veterinario {
+public class Veterinario extends Profissional{
+    private String crmv, especialidade;
+    
     
 }

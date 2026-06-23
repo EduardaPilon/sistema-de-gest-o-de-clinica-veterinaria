@@ -8,16 +8,22 @@ package Telas;
  *
  * @author eduar
  */
-public class FormAnimal extends javax.swing.JDialog {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormAnimal.class.getName());
 
+import Classes.Controle;
+import Classes.Veterinario;
+public class GerenciarVeterinario extends javax.swing.JDialog {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GerenciarVeterinario.class.getName());
+    Controle controle;
     /**
-     * Creates new form FormAnimal
+     * Creates new form FormVeterinario
      */
-    public FormAnimal(java.awt.Frame parent, boolean modal) {
+    public GerenciarVeterinario(java.awt.Frame parent, boolean modal, Controle controle) {
         super(parent, modal);
+        
+        this.controle = controle;
         initComponents();
+        setLocationRelativeTo(parent);
     }
 
     /**
@@ -29,50 +35,47 @@ public class FormAnimal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton5 = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnEdiatr = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-
-        jButton5.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btnEditar.setText("EDITAR");
+        btnExcluir.setText("EXCLUIR");
+
+        btnEdiatr.setText("EDITAR");
 
         btnListar.setText("LISTAR");
 
         btnAdicionar.setText("ADICIONAR");
         btnAdicionar.addActionListener(this::btnAdicionarActionPerformed);
 
-        btnExcluir.setText("EXCLUIR");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdiatr, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(33, 33, 33)
                 .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEdiatr, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,9 +92,8 @@ public class FormAnimal extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
-    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEdiatr;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnListar;
-    private javax.swing.JButton jButton5;
     // End of variables declaration//GEN-END:variables
 }

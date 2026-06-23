@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Telas;
+import Classes.Controle;
+        
 
 /**
  *
@@ -11,7 +13,7 @@ package Telas;
 public class Principal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
-
+    Controle controle;
     /**
      * Creates new form Principal
      */
@@ -37,6 +39,7 @@ public class Principal extends javax.swing.JFrame {
         btnAnimal.addActionListener(this::btnAnimalActionPerformed);
 
         btnVeterinario.setText("VETERINÁRIO");
+        btnVeterinario.addActionListener(this::btnVeterinarioActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,6 +74,11 @@ public class Principal extends javax.swing.JFrame {
     private void btnAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnimalActionPerformed
+
+    private void btnVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeterinarioActionPerformed
+        GerenciarVeterinario gerenciarVeterinario = new GerenciarVeterinario(this, true, controle);
+        gerenciarVeterinario.setVisible(true);
+    }//GEN-LAST:event_btnVeterinarioActionPerformed
 
     /**
      * @param args the command line arguments
