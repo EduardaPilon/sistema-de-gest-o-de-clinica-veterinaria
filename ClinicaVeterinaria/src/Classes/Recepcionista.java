@@ -4,10 +4,24 @@
  */
 package Classes;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author eduar
  */
 public class Recepcionista extends Profissional{
+
+    public Recepcionista() {
+    }
+
+    public Recepcionista(int codigo, String nome, ArrayList<String> telefones) {
+        super(codigo, nome, telefones);
+    }
+
+    @Override
+    public String toString() {
+        return "Recepcionista{" + '}';
+    }
     
 }

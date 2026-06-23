@@ -72,7 +72,8 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimalActionPerformed
-        // TODO add your handling code here:
+        GerenciarAnimal gerenciarAnimal = new GerenciarAnimal(this, true, controle);
+        gerenciarAnimal.setVisible(true);
     }//GEN-LAST:event_btnAnimalActionPerformed
 
     private void btnVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeterinarioActionPerformed

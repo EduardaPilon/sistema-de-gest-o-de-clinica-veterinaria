@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package Telas;
+import Classes.Controle;
 
 /**
  *
@@ -11,12 +12,13 @@ package Telas;
 public class GerenciarAnimal extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GerenciarAnimal.class.getName());
-
+    Controle controle;
     /**
      * Creates new form FormAnimal
      */
-    public GerenciarAnimal(java.awt.Frame parent, boolean modal) {
+    public GerenciarAnimal(java.awt.Frame parent, boolean modal, Controle controle) {
         super(parent, modal);
+        this.controle = controle;
         initComponents();
     }
 
