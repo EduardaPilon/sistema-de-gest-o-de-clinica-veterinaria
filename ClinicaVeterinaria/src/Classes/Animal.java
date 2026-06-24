@@ -14,16 +14,22 @@ import java.util.Date;
 public class Animal {
     private String nome, especie, raca;
     private LocalDate dataNascimento;
+    private int codigo;
     private Tutor tutor;
 
-    public Animal(String nome, String especie, String raca, LocalDate dataNascimento, Tutor tutor) {
+    public Animal(int codigo, String nome, String especie, String raca, LocalDate dataNascimento, Tutor tutor) {
         this.nome = nome;
         this.especie = especie;
         this.raca = raca;
         this.dataNascimento = dataNascimento;
         this.tutor = tutor;
+        this.codigo = codigo;
     }
 
+    public int getCodigo(){
+        return codigo;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -42,6 +48,10 @@ public class Animal {
 
     public Tutor getTutor() {
         return tutor;
+    }
+    
+    public void setCodigo(int codigo){
+        this.codigo = codigo;
     }
 
     public void setNome(String nome) {

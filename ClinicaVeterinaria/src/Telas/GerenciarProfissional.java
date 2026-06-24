@@ -11,14 +11,14 @@ package Telas;
 
 import Classes.Controle;
 import Classes.Veterinario;
-public class GerenciarVeterinario extends javax.swing.JDialog {
+public class GerenciarProfissional extends javax.swing.JDialog {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GerenciarVeterinario.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GerenciarProfissional.class.getName());
     Controle controle;
     /**
      * Creates new form FormVeterinario
      */
-    public GerenciarVeterinario(java.awt.Frame parent, boolean modal, Controle controle) {
+    public GerenciarProfissional(java.awt.Frame parent, boolean modal, Controle controle) {
         super(parent, modal);
         
         this.controle = controle;
@@ -35,10 +35,13 @@ public class GerenciarVeterinario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         btnExcluir = new javax.swing.JButton();
         btnEdiatr = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
+        rbVeterinario = new javax.swing.JRadioButton();
+        rbRecepcionista = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,25 +54,45 @@ public class GerenciarVeterinario extends javax.swing.JDialog {
         btnAdicionar.setText("ADICIONAR");
         btnAdicionar.addActionListener(this::btnAdicionarActionPerformed);
 
+        buttonGroup1.add(rbVeterinario);
+        rbVeterinario.setSelected(true);
+        rbVeterinario.setText("Veterinário");
+
+        buttonGroup1.add(rbRecepcionista);
+        rbRecepcionista.setText("Recepcionaista");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdiatr, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(133, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbRecepcionista, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEdiatr, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rbVeterinario)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbRecepcionista)))
+                .addGap(27, 27, 27)
                 .addComponent(btnEdiatr, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -82,7 +105,14 @@ public class GerenciarVeterinario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        // TODO add your handling code here:
+        
+        if(rbVeterinario.isSelected()){
+            AdicionarVeterinario adicionarVeterinario = new AdicionarVeterinario(this, true, controle);
+            adicionarVeterinario.setVisible(true);
+        }else{
+            AdicionarRecepcionista adicionarVeterinario = new AdicionarRecepcionista(this, true, controle);
+            adicionarVeterinario.setVisible(true);
+        }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     /**
@@ -95,5 +125,8 @@ public class GerenciarVeterinario extends javax.swing.JDialog {
     private javax.swing.JButton btnEdiatr;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnListar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton rbRecepcionista;
+    private javax.swing.JRadioButton rbVeterinario;
     // End of variables declaration//GEN-END:variables
 }

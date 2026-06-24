@@ -77,8 +77,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnimalActionPerformed
 
     private void btnVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeterinarioActionPerformed
-        GerenciarVeterinario gerenciarVeterinario = new GerenciarVeterinario(this, true, controle);
-        gerenciarVeterinario.setVisible(true);
+        GerenciarProfissional GerenciarProfissional = new GerenciarProfissional(this, true, controle);
+        GerenciarProfissional.setVisible(true);
     }//GEN-LAST:event_btnVeterinarioActionPerformed
 
     /**

@@ -5,12 +5,104 @@
 package Classes;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  *
  * @author eduar
  */
 public class Controle {
-    private ArrayList<Veterinario> veterinario;
-    private ArrayList<Animal> animal;
+    private ArrayList<Profissional>listaProfissional;
+    private ArrayList<Animal> listaAnimal;
+
+    public Controle() {
+        listaProfissional = new ArrayList<>();
+        listaAnimal = new ArrayList<>();
+    }
+
+    public Controle(ArrayList<Profissional> listaProfissional, ArrayList<Animal> listaAnimal) {
+        this.listaProfissional = listaProfissional;
+        this.listaAnimal = listaAnimal;
+    }
+
+
+    public ArrayList<Profissional> getListaProfissional() {
+        return listaProfissional;
+    }
+
+
+    public ArrayList<Animal> getListaAnimal() {
+        return listaAnimal;
+    }
+
+    public void setListaProfissional(ArrayList<Profissional> listaProfissional) {
+        this.listaProfissional = listaProfissional;
+    }
+
+    public void setListaAnimal(ArrayList<Animal> listaAnimal) {
+        this.listaAnimal = listaAnimal;
+    }
+    
+    //Adicionar
+    
+    public void addProfissional(Profissional p){
+        Profissional aux = buscarProfissional(p.getCodigo());
+        if(aux == null){
+            listaProfissional.add(p);
+            return;
+        }
+        throw new IllegalArgumentException("Esse código de profissional já está cadastrado");
+    }
+    
+    public void addAnimal(Animal a){
+        Animal aux = buscarAnimal(a.getCodigo());
+        if(aux == null){
+            listaAnimal.add(a);
+            return;
+        }
+        throw new IllegalArgumentException("Esse código de animal já está cadastrado");
+    }
+          
+    
+    
+   //Buscar
+    
+    public Profissional buscarProfissional(int cod){
+        for(Profissional p : listaProfissional){
+            if(p.getCodigo()== cod){
+                return p;
+            }
+        }
+        return null;
+    }
+    
+    public Animal buscarAnimal(int cod){
+        for(Animal a: listaAnimal){
+            if(a.getCodigo() == cod){
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    //excluir
+    
+    public boolean excluirProfissional(int cod){
+        Profissional aux = buscarProfissional(cod);
+        if(aux != null){
+            listaProfissional.remove(aux);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean excluirAnimal(int cod){
+        Animal aux = buscarAnimal(cod);
+        if(aux != null){
+            listaAnimal.remove(aux);
+            return true;
+        }
+        return false;
+        
+    }
 }
