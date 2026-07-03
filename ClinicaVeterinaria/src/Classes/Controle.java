@@ -12,19 +12,16 @@ import java.util.Vector;
  * @author eduar
  */
 public class Controle {
-    private ArrayList<Profissional>listaProfissional;
+    private ArrayList<Profissional>listaProfissional = new ArrayList<>();
     private ArrayList<Animal> listaAnimal;
 
     public Controle() {
-        listaProfissional = new ArrayList<>();
+        this.listaProfissional = new ArrayList<>();
         listaAnimal = new ArrayList<>();
     }
 
-    public Controle(ArrayList<Profissional> listaProfissional, ArrayList<Animal> listaAnimal) {
-        this.listaProfissional = listaProfissional;
-        this.listaAnimal = listaAnimal;
-    }
-
+    
+    //Get-------------------------------------------------------------------
 
     public ArrayList<Profissional> getListaProfissional() {
         return listaProfissional;
@@ -34,7 +31,9 @@ public class Controle {
     public ArrayList<Animal> getListaAnimal() {
         return listaAnimal;
     }
-
+    
+    //Set-------------------------------------------------------------------
+    
     public void setListaProfissional(ArrayList<Profissional> listaProfissional) {
         this.listaProfissional = listaProfissional;
     }
@@ -43,7 +42,7 @@ public class Controle {
         this.listaAnimal = listaAnimal;
     }
     
-    //Adicionar
+    //Adicionar---------------------------------------------------------------
     
     public void addProfissional(Profissional p){
         Profissional aux = buscarProfissional(p.getCodigo());
@@ -65,7 +64,7 @@ public class Controle {
           
     
     
-   //Buscar
+   //Buscar-------------------------------------------------------------------------
     
     public Profissional buscarProfissional(int cod){
         for(Profissional p : listaProfissional){
@@ -85,7 +84,7 @@ public class Controle {
         return null;
     }
     
-    //excluir
+    //Excluir------------------------------------------------------------------------
     
     public boolean excluirProfissional(int cod){
         Profissional aux = buscarProfissional(cod);

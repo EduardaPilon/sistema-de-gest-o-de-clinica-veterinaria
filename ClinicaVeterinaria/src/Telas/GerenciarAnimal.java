@@ -4,6 +4,7 @@
  */
 package Telas;
 import Classes.Controle;
+import Classes.Animal;
 
 /**
  *
@@ -20,6 +21,8 @@ public class GerenciarAnimal extends javax.swing.JDialog {
         super(parent, modal);
         this.controle = controle;
         initComponents();
+        
+        setLocationRelativeTo(parent);
     }
 
     /**
@@ -81,7 +84,9 @@ public class GerenciarAnimal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        // TODO add your handling code here:
+        
+        CadastrarAnimal cadastrarAnimal = new CadastrarAnimal(this, true, controle);
+        cadastrarAnimal.setVisible(true);
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     /**
