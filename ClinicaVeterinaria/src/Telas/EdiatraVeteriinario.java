@@ -4,40 +4,24 @@
  */
 package Telas;
 import Classes.Controle;
-import Classes.Profissional;
-import Classes.Veterinario;
-import java.util.ArrayList;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-
 
 /**
  *
  * @author eduar
  */
-public class AdicionarVeterinario extends javax.swing.JDialog {
+public class EdiatraVeteriinario extends javax.swing.JDialog {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdicionarVeterinario.class.getName());
-    Controle controle ;
-    private ArrayList<String>listaTelefone;
-    
-    private void limparCodigo(){
-          tfCodigo.setText("");
-        tfNome.setText("");
-        tfCrmv.setText("");
-        tfTelefone.setText("");
-        taSaida.setText("");
-        listaTelefone.clear();  
-    }
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EdiatraVeteriinario.class.getName());
+
+        Controle controle;
     /**
-     * Creates new form AdicionarProfissional
+     * Creates new form EdiatraVeteriinario
      */
-    
-    public AdicionarVeterinario(JDialog parent, boolean modal, Controle controle) {
+    public EdiatraVeteriinario(JDialog parent, boolean modal, Controle controle) {
         super(parent, modal);
+        controle = controle;
         initComponents();
-        this.controle = controle;
-        listaTelefone = new ArrayList<>();
     }
 
     /**
@@ -50,9 +34,13 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
     private void initComponents() {
 
         btnCancelar = new javax.swing.JButton();
+        tfTelefone = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taSaida = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnAdicionar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -60,10 +48,6 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
         tfCrmv = new javax.swing.JTextField();
         tfNome = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        tfTelefone = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        taSaida = new javax.swing.JTextArea();
-        btnAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -73,9 +57,16 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
         btnSalvar.setText("SALVAR");
         btnSalvar.addActionListener(this::btnSalvarActionPerformed);
 
+        taSaida.setColumns(20);
+        taSaida.setRows(5);
+        jScrollPane1.setViewportView(taSaida);
+
         jLabel1.setText("NOME:");
 
         jLabel2.setText("CÓDIGO:");
+
+        btnAdicionar.setText("adicionar");
+        btnAdicionar.addActionListener(this::btnAdicionarActionPerformed);
 
         jLabel3.setText("CRMV:");
 
@@ -86,13 +77,6 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
         tfNome.addActionListener(this::tfNomeActionPerformed);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clínico geral", "Dermatologia", "Ortopedia" }));
-
-        taSaida.setColumns(20);
-        taSaida.setRows(5);
-        jScrollPane1.setViewportView(taSaida);
-
-        btnAdicionar.setText("adicionar");
-        btnAdicionar.addActionListener(this::btnAdicionarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,7 +116,7 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +144,7 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,53 +154,30 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
         //Salvar
-        
-        int cod = Integer.parseInt(tfCodigo.getText());
-            String nome = tfNome.getText();
-            String crmv = tfCrmv.getText();
-            String especialidade = jComboBox1.getSelectedItem().toString();
-        
-            Veterinario v = new Veterinario(cod, nome,listaTelefone, crmv ,especialidade);
-            controle.addProfissional(v);
-            
-            JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!");
-            limparCodigo();
-        
-        
+     
+
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        //TELEFONE
+
+
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNomeActionPerformed
 
-    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        //TELEFONE
-        
-        String telefone = tfTelefone.getText().trim();
-        
-        if(telefone.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Digite um número de telefone");
-            return;
-        }
-        
-        listaTelefone.add(telefone);
-        taSaida.append(telefone + "\n");
-        tfTelefone.setText("");
-        tfTelefone.requestFocus();
-        
-    }//GEN-LAST:event_btnAdicionarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     /**
      * @param args the command line arguments
      */
-    
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnCancelar;
