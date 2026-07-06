@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package Telas;
+import Classes.*;
 
 /**
  *
@@ -11,6 +12,7 @@ package Telas;
 
 import Classes.Controle;
 import Classes.Veterinario;
+import javax.swing.JOptionPane;
 public class GerenciarProfissional extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GerenciarProfissional.class.getName());
@@ -104,7 +106,7 @@ public class GerenciarProfissional extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        
+                
         if(rbVeterinario.isSelected()){
             AdicionarVeterinario adicionarVeterinario = new AdicionarVeterinario(this, true, controle);
             adicionarVeterinario.setVisible(true);
@@ -115,14 +117,34 @@ public class GerenciarProfissional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnEdiatrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdiatrActionPerformed
-        // EDIATAR
+        String cod = JOptionPane.showInputDialog("Código: ");
         
-        if(rbVeterinario.isSelected()){
-            EdiatraVeteriinario editarVeterinario = new EdiatraVeteriinario(this, true, controle);
-            editarVeterinario.setVisible(true);
-        }else{
-            EditarRecepcionista editarRecepcionista = new EditarRecepcionista(this, true, controle);
-            editarRecepcionista.setVisible(true);
+        if (cod == null) return;
+        
+        if (cod.trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "E necessario um Código para pesquisar!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try {
+            int codigo = Integer.parseInt(cod);
+            
+            Profissional aux = controle.buscarProfissional(codigo);
+            
+            if (rbVeterinario.isSelected()){
+                if (aux != null && aux instanceof Veterinario){
+                    EditarVeterinario editarVeterinario = new EditarVeterinario(this, true, controle, (Veterinario)aux);
+                    editarVeterinario.setVisible(true);
+                }
+            }else {
+                if (aux != null && aux instanceof Recepcionista){
+                    EditarRecepcionista editarRecepcionista = new EditarRecepcionista(this, true, controle, (Recepcionista)aux);
+                    editarRecepcionista.setVisible(true);
+                }
+            }
+        
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Codigo so pode conter numeros.");
         }
     }//GEN-LAST:event_btnEdiatrActionPerformed
 

@@ -5,21 +5,23 @@
 package Telas;
 import Classes.Controle;
 import javax.swing.JDialog;
+import Classes.Veterinario;
 
 /**
  *
  * @author eduar
  */
-public class EdiatraVeteriinario extends javax.swing.JDialog {
+public class EditarVeterinario extends javax.swing.JDialog {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EdiatraVeteriinario.class.getName());
-
-        Controle controle;
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditarVeterinario.class.getName());
+    Veterinario veterinario;
+    Controle controle;
     /**
      * Creates new form EdiatraVeteriinario
      */
-    public EdiatraVeteriinario(JDialog parent, boolean modal, Controle controle) {
+    public EditarVeterinario(JDialog parent, boolean modal, Controle controle, Veterinario veterinario) {
         super(parent, modal);
+        veterinario = veterinario;
         controle = controle;
         initComponents();
     }
