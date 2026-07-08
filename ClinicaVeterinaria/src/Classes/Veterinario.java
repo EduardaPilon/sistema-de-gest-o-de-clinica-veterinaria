@@ -45,7 +45,7 @@ public class Veterinario extends Profissional{
 
     @Override
     public String toString() {
-        return "Veterinario{" + "crmv=" + crmv + ", especialidade=" + especialidade + '}';
+        return super.toString().replace("Profissional:", "Veterinário;") + "crmv=" + crmv + ", especialidade=" + especialidade;
     }
     
     

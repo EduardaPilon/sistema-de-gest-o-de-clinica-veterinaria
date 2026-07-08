@@ -4,6 +4,7 @@
  */
 package Telas;
 import Classes.Controle;
+import Classes.Recepcionista;
 import javax.swing.JDialog;
 
 /**
@@ -14,13 +15,15 @@ public class EditarRecepcionista extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditarRecepcionista.class.getName());
     Controle controle;
+    Recepcionista recepconista;
 
     /**
      * Creates new form EditarRecepcionista
      */
-    public EditarRecepcionista(JDialog parent, boolean modal, Controle controle) {
+    public EditarRecepcionista(JDialog parent, boolean modal, Controle controle, Recepcionista recepconista) {
         super(parent, modal);
         controle = controle;
+        recepconista = recepconista;
         initComponents();
     }
 

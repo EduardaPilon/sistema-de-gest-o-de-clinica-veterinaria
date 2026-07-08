@@ -21,7 +21,7 @@ public class Recepcionista extends Profissional{
 
     @Override
     public String toString() {
-        return "Recepcionista{" + '}';
+        return super.toString().replace("Profissional:", "Recepcionista:");
     }
     
 }

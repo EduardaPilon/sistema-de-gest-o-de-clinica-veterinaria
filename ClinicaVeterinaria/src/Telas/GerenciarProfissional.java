@@ -25,7 +25,6 @@ public class GerenciarProfissional extends javax.swing.JDialog {
         
         this.controle = controle;
         initComponents();
-        buttonGroup1.clearSelection();
         setLocationRelativeTo(parent);
     }
 
@@ -66,6 +65,7 @@ public class GerenciarProfissional extends javax.swing.JDialog {
         rbVeterinario.setText("Veterinário");
 
         buttonGroup1.add(rbRecepcionista);
+        rbRecepcionista.setSelected(true);
         rbRecepcionista.setText("Recepcionaista");
 
         taSaida.setColumns(20);
@@ -120,10 +120,7 @@ public class GerenciarProfissional extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        
-        if(!rbRecepcionista.isSelected() && rbVeterinario.isSelected()){
-            JOptionPane.showMessageDialog(this, "Você deve escolher um ererinário ou um recepcionista", "Erro de Seleção", JOptionPane.ERROR_MESSAGE);
-        }
+
         if(rbVeterinario.isSelected()){
             AdicionarVeterinario adicionarVeterinario = new AdicionarVeterinario(this, true, controle);
             adicionarVeterinario.setVisible(true);
@@ -134,11 +131,7 @@ public class GerenciarProfissional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnEdiatrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdiatrActionPerformed
-        
-        if(!rbRecepcionista.isSelected() && rbVeterinario.isSelected()){
-            JOptionPane.showMessageDialog(this, "Você deve escolher um ererinário ou um recepcionista", "Erro de Seleção", JOptionPane.ERROR_MESSAGE);
-        }
-        
+       
         String cod = JOptionPane.showInputDialog("Código: ");
         
         if (cod == null) return;

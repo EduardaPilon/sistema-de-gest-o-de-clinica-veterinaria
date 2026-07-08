@@ -173,17 +173,26 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         
         //Salvar
-        
-        int cod = Integer.parseInt(tfCodigo.getText());
+        try{
+             
+            int cod = Integer.parseInt(tfCodigo.getText());
             String nome = tfNome.getText();
             String crmv = tfCrmv.getText();
             String especialidade = jComboBox1.getSelectedItem().toString();
-        
+
             Veterinario v = new Veterinario(cod, nome,listaTelefone, crmv ,especialidade);
             controle.addProfissional(v);
-            
-            JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!");
+
+            JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!", "Sucesso", 
+                    JOptionPane.INFORMATION_MESSAGE);
             limparCodigo();
+            this.dispose();
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "O código deve conter apenas números ", "Erro de Digitação", 
+                    JOptionPane.ERROR_MESSAGE);
+        }catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Código Duplicado", JOptionPane.WARNING_MESSAGE);
+        }
         
         
     }//GEN-LAST:event_btnSalvarActionPerformed

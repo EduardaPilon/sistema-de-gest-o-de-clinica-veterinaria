@@ -50,7 +50,7 @@ public class Profissional {
 
     @Override
     public String toString() {
-        return "Profissional{" + "codigo=" + codigo + ", nome=" + nome + ", telefones=" + telefones + '}';
+        return "Profissional:" + "codigo=" + codigo + ", nome=" + nome + ", telefones=" + telefones ;
     }
     
     
