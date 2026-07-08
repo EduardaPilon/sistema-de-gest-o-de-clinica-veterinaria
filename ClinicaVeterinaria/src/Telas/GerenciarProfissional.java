@@ -204,6 +204,28 @@ public class GerenciarProfissional extends javax.swing.JDialog {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // Excluir
+        
+        String cod = JOptionPane.showInputDialog(this,"Código: ");
+        if( cod == null) return;
+        
+        if(cod.trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "É necessario um código para excluir", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try{
+            int codigo = Integer.parseInt(cod.trim());
+            boolean excluiu = controle.excluirProfissional(codigo);
+            
+            if(excluiu){
+                JOptionPane.showMessageDialog(this, "Profissional excluido com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                btnListarActionPerformed(evt);
+            }else{
+                JOptionPane.showMessageDialog(this, "Profissional não encontrado","Erro",JOptionPane.ERROR_MESSAGE );
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "O código deve conter apenas números", "Erro de Digitação", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
