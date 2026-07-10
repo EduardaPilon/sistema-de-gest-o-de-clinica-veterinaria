@@ -22,7 +22,7 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
     private ArrayList<String>listaTelefone;
     
     private void limparCodigo(){
-          tfCodigo.setText("");
+        tfCodigo.setText("");
         tfNome.setText("");
         tfCrmv.setText("");
         tfTelefone.setText("");
@@ -183,13 +183,11 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
             Veterinario v = new Veterinario(cod, nome,listaTelefone, crmv ,especialidade);
             controle.addProfissional(v);
 
-            JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!", "Sucesso", 
-                    JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             limparCodigo();
             this.dispose();
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "O código deve conter apenas números ", "Erro de Digitação", 
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "O código deve conter apenas números ", "Erro de Digitação",JOptionPane.ERROR_MESSAGE);
         }catch(IllegalArgumentException e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Código Duplicado", JOptionPane.WARNING_MESSAGE);
         }
