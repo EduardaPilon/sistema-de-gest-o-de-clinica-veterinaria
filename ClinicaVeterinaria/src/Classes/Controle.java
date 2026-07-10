@@ -13,7 +13,8 @@ import java.util.Vector;
  */
 public class Controle {
     private ArrayList<Profissional>listaProfissional = new ArrayList<>();
-    private ArrayList<Animal> listaAnimal;
+    private ArrayList<Animal> listaAnimal = new ArrayList<>();
+    private ArrayList<Tutor> ListaTutor = new ArrayList<>();
 
     public Controle() {
         this.listaProfissional = new ArrayList<>();
@@ -31,6 +32,11 @@ public class Controle {
     public ArrayList<Animal> getListaAnimal() {
         return listaAnimal;
     }
+
+    public ArrayList<Tutor> getListaTutor() {
+        return ListaTutor;
+    }
+    
     
     //Set-------------------------------------------------------------------
     
@@ -41,6 +47,11 @@ public class Controle {
     public void setListaAnimal(ArrayList<Animal> listaAnimal) {
         this.listaAnimal = listaAnimal;
     }
+
+    public void setListaTutor(ArrayList<Tutor> ListaTutor) {
+        this.ListaTutor = ListaTutor;
+    }
+    
     
     //Adicionar---------------------------------------------------------------
     
@@ -61,9 +72,9 @@ public class Controle {
         }
         throw new IllegalArgumentException("Esse código de animal já está cadastrado");
     }
-          
     
-    
+ 
+             
    //Buscar-------------------------------------------------------------------------
     
     public Profissional buscarProfissional(int cod){
