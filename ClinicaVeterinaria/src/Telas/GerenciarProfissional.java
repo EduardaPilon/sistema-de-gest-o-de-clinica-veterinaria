@@ -172,7 +172,7 @@ public class GerenciarProfissional extends javax.swing.JDialog {
             return;
         }
         if(rbRecepcionista.isSelected()){
-            taSaida.append("--- LISTA DE VETERINÁRIOS ---\n\n");
+            taSaida.append("--- LISTA DE RECEPCIONISTA ---\n\n");
             for(Profissional p: controle.getListaProfissional()){
                 if( p instanceof Recepcionista){
                     taSaida.append(p.toString()+"\n");
@@ -185,13 +185,13 @@ public class GerenciarProfissional extends javax.swing.JDialog {
                     taSaida.append(p.toString()+"\n");
                 }
             }
-        }else{
-                taSaida.append("--- TODOS OS PROFISSIONAIS ---\n\n");
-                for(Profissional p : controle.getListaProfissional()){
-                    taSaida.append(p.toString()+"\n");
-                }
+        }//else{
+           //     taSaida.append("--- TODOS OS PROFISSIONAIS ---\n\n");
+           //     for(Profissional p : controle.getListaProfissional()){
+           //         taSaida.append(p.toString()+"\n");
+           //     }
                 
-                }
+            //    }
             
     }//GEN-LAST:event_btnListarActionPerformed
 
