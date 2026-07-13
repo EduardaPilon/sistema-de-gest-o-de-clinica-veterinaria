@@ -48,6 +48,7 @@ public class GerenciarAnimal extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnEditar.setText("EDITAR");
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
 
         btnListar.setText("LISTAR");
         btnListar.addActionListener(this::btnListarActionPerformed);
@@ -100,9 +101,9 @@ public class GerenciarAnimal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        
-        CadastrarAnimal cadastrarAnimal = new CadastrarAnimal(this, true, controle);
-        cadastrarAnimal.setVisible(true);
+        // adicionar
+        AdicionarAnimal adicionarAnimal = new AdicionarAnimal(this, true, controle);
+        adicionarAnimal.setVisible(true);
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -145,6 +146,11 @@ public class GerenciarAnimal extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // editar
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments

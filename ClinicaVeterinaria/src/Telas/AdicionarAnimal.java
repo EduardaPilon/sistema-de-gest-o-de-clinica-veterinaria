@@ -6,6 +6,7 @@ package Telas;
 import Classes.Controle;
 import Classes.Animal;
 import Classes.Tutor;
+import java.awt.Dialog;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -24,7 +25,7 @@ public class AdicionarAnimal extends javax.swing.JDialog {
     /**
      * Creates new form AdicionarAnimal
      */
-    public AdicionarAnimal(java.awt.Frame parent, boolean modal, Controle controle) {
+    public AdicionarAnimal(Dialog parent, boolean modal, Controle controle) {
         super(parent, modal);
         initComponents();
         this.controle = controle;
@@ -32,7 +33,7 @@ public class AdicionarAnimal extends javax.swing.JDialog {
         cbTutor.removeAllItems();
 
         for (Tutor t : controle.getListaTutor()) {
-            cbTutor.addItem(t);
+            cbTutor.addItem(t.toString());
         }
     }
 
@@ -184,7 +185,7 @@ public class AdicionarAnimal extends javax.swing.JDialog {
         cbTutor.removeAllItems();
 
         for (Tutor t : controle.getListaTutor()) {
-            cbTutor.addItem(t);
+            cbTutor.addItem(t.toString());
         }
     }//GEN-LAST:event_btnAdicionarTutorActionPerformed
 
