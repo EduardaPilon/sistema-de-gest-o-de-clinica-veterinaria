@@ -5,6 +5,7 @@
 package Telas;
 import Classes.Controle;
 import Classes.Animal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +40,8 @@ public class GerenciarAnimal extends javax.swing.JDialog {
         btnListar = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taSaida = new javax.swing.JTextArea();
 
         jButton5.setText("jButton1");
 
@@ -47,11 +50,17 @@ public class GerenciarAnimal extends javax.swing.JDialog {
         btnEditar.setText("EDITAR");
 
         btnListar.setText("LISTAR");
+        btnListar.addActionListener(this::btnListarActionPerformed);
 
         btnAdicionar.setText("ADICIONAR");
         btnAdicionar.addActionListener(this::btnAdicionarActionPerformed);
 
         btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(this::btnExcluirActionPerformed);
+
+        taSaida.setColumns(20);
+        taSaida.setRows(5);
+        jScrollPane1.setViewportView(taSaida);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,19 +73,26 @@ public class GerenciarAnimal extends javax.swing.JDialog {
                     .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -89,6 +105,47 @@ public class GerenciarAnimal extends javax.swing.JDialog {
         cadastrarAnimal.setVisible(true);
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        //excluir
+                
+           String cod = JOptionPane.showInputDialog(this,"Código");
+           if( cod == null) return;
+           
+           if(cod.trim().isEmpty()){
+               JOptionPane.showMessageDialog(this, "É necessario um código para excluir", "Aviso", JOptionPane.WARNING_MESSAGE);
+               return;
+           }
+           
+           try{
+               
+               int codigo = Integer.parseInt(cod.trim());
+               boolean excluiu = controle.excluirAnimal(codigo);
+               if(excluiu){
+                JOptionPane.showMessageDialog(this, "Profissional excluido com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                btnListarActionPerformed(evt);
+            }else{
+                JOptionPane.showMessageDialog(this, "Profissional não encontrado","Erro",JOptionPane.ERROR_MESSAGE );
+            }
+           }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "O código deve conter apenas números", "Erro de Digitação", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        // listar
+        taSaida.setText("");
+        
+        if(controle.getListaAnimal().isEmpty()){
+            taSaida.setText("Nenhum animal cadastrado");
+        }else{
+            taSaida.append("--- LISTA DE ANIMAIS ---");
+            for(Animal a: controle.getListaAnimal()){
+                taSaida.append(a.toString() + "\n");
+            }
+        }
+        
+    }//GEN-LAST:event_btnListarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -100,5 +157,7 @@ public class GerenciarAnimal extends javax.swing.JDialog {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton jButton5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables
 }
