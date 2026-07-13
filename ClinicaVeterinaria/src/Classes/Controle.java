@@ -73,6 +73,11 @@ public class Controle {
         throw new IllegalArgumentException("Esse código de animal já está cadastrado");
     }
     
+    public void addTutor(Tutor t){
+        ListaTutor.add(t);
+        
+    }
+    
  
              
    //Buscar-------------------------------------------------------------------------
@@ -95,6 +100,15 @@ public class Controle {
         return null;
     }
     
+    public Tutor buscarTutor(String nome){
+        for(Tutor t: ListaTutor){
+            if(t.getNome()== nome){
+                return t;
+            }
+        }
+        return null;
+    }
+    
     //Excluir------------------------------------------------------------------------
     
     public boolean excluirProfissional(int cod){
@@ -110,6 +124,16 @@ public class Controle {
         Animal aux = buscarAnimal(cod);
         if(aux != null){
             listaAnimal.remove(aux);
+            return true;
+        }
+        return false;
+        
+    }
+    
+    public boolean excluirTutor(String nome){
+        Tutor aux = buscarTutor(nome);
+        if(aux != null){
+            ListaTutor.remove(aux);
             return true;
         }
         return false;

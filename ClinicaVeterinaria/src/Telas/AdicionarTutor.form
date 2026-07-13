@@ -90,11 +90,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="CANCELAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSalvar1">
       <Properties>
         <Property name="text" type="java.lang.String" value="SALVAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvar1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

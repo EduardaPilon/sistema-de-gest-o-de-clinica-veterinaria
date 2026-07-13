@@ -19,6 +19,7 @@ public class AdicionarAnimal extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdicionarAnimal.class.getName());
     Controle controle;
+    Tutor tutor;
     
     /**
      * Creates new form AdicionarAnimal
@@ -28,7 +29,9 @@ public class AdicionarAnimal extends javax.swing.JDialog {
         initComponents();
         this.controle = controle;
         
-        for(Tutor t : controle.getListaTutor()){
+        cbTutor.removeAllItems();
+
+        for (Tutor t : controle.getListaTutor()) {
             cbTutor.addItem(t);
         }
     }
@@ -76,6 +79,7 @@ public class AdicionarAnimal extends javax.swing.JDialog {
         jLabel6.setText("Tutor:");
 
         tfNascimento.setText("DD/MM/AAAA");
+        tfNascimento.addActionListener(this::tfNascimentoActionPerformed);
 
         jLabel7.setText("Tutor não cadastrado:");
 
@@ -146,12 +150,13 @@ public class AdicionarAnimal extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(tfRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tfNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(tfNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -175,6 +180,12 @@ public class AdicionarAnimal extends javax.swing.JDialog {
         
         AdicionarTutor adicionarTutor = new AdicionarTutor(this, true, controle);
         adicionarTutor.setVisible(true);
+        
+        cbTutor.removeAllItems();
+
+        for (Tutor t : controle.getListaTutor()) {
+            cbTutor.addItem(t);
+        }
     }//GEN-LAST:event_btnAdicionarTutorActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -185,7 +196,10 @@ public class AdicionarAnimal extends javax.swing.JDialog {
         // salvar
         
         try{
-            
+            if (cbTutor.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Cadastre ou selecione um tutor.");
+                return;
+            }
             int cod = Integer.parseInt(tfCodigo.getText());
             String nome = tfNome.getText();
             String raca = tfRaca.getText();
@@ -207,6 +221,10 @@ public class AdicionarAnimal extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void tfNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNascimentoActionPerformed
 
     /**
      * @param args the command line arguments

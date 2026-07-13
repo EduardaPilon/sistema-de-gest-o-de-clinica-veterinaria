@@ -3,6 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package Telas;
+import Classes.Tutor;
+import Classes.Controle;
+import javax.swing.JDialog;
+
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -11,13 +17,14 @@ package Telas;
 public class AdicionarTutor extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdicionarTutor.class.getName());
-
+    Controle controle;
     /**
      * Creates new form AdicionarTutor
      */
-    public AdicionarTutor(java.awt.Frame parent, boolean modal) {
+    public AdicionarTutor(JDialog parent, boolean modal, Controle controle) {
         super(parent, modal);
         initComponents();
+        this.controle = controle;
     }
 
     /**
@@ -43,8 +50,10 @@ public class AdicionarTutor extends javax.swing.JDialog {
         jLabel2.setText("Telefone;");
 
         btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         btnSalvar1.setText("SALVAR");
+        btnSalvar1.addActionListener(this::btnSalvar1ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,6 +97,21 @@ public class AdicionarTutor extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
+        
+       
+        String nome = tfNome.getText();
+        String telefone = tfTelefone.getText();
+        Tutor t = new Tutor(nome, telefone);
+        JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        
+       
+    }//GEN-LAST:event_btnSalvar1ActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
