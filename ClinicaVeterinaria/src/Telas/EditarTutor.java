@@ -26,7 +26,7 @@ public class EditarTutor extends javax.swing.JDialog {
         this.controle = controle;
         this.tutor = tutor;
         
-        tfNome.setText(tutor.getName());
+        tfNome.setText(tutor.getNome());
         tfTelefone.setText(tutor.getTelefone());
     }
 

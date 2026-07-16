@@ -18,7 +18,6 @@ public class EditarRecepcionista extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditarRecepcionista.class.getName());
     Controle controle;
     Recepcionista recepconista;
-    private ArrayList<String>listaTelefonica;
 
     /**
      * Creates new form EditarRecepcionista
@@ -159,8 +158,8 @@ public class EditarRecepcionista extends javax.swing.JDialog {
             return;
         }
 
-        listaTelefonica.add(telefone);
-        taSaida.append(telefone + "\n");
+        recepconista.getTelefones().add(telefone);
+        atualizarListaTelefonica();
         tfTelefone.setText("");
         tfTelefone.requestFocus();
     }//GEN-LAST:event_adicionarActionPerformed

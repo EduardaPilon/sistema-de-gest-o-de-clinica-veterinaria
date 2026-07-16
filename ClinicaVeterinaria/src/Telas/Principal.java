@@ -39,7 +39,7 @@ public class Principal extends javax.swing.JFrame {
         btnAnimal.setText("ANIMAL");
         btnAnimal.addActionListener(this::btnAnimalActionPerformed);
 
-        btnVeterinario.setText("VETERINÁRIO");
+        btnVeterinario.setText("PROFISSIONAL");
         btnVeterinario.addActionListener(this::btnVeterinarioActionPerformed);
 
         jButton1.setText("TUTOR");

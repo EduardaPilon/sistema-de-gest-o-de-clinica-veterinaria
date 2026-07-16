@@ -25,7 +25,6 @@ public class AdicionarRecepcionista extends javax.swing.JDialog {
         tfNome.setText("");
         tfTelefone.setText("");
         taSaida.setText("");
-        listaTelefone.clear();  
     }
     /**
      * Creates new form AdicionarRecepcionista

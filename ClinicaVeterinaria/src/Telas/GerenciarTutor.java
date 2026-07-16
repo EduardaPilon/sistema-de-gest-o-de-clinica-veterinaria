@@ -151,11 +151,11 @@ public class GerenciarTutor extends javax.swing.JDialog {
         // listar
         taSaida.setText("");
 
-        if(controle.getListaProfissional().isEmpty()){
-            taSaida.setText("Nenum profissional cadastrado");
+        if(controle.getListaTutor().isEmpty()){
+            taSaida.setText("Nenum Tutor cadastrado");
             return;
         }else{
-            taSaida.append("--- LISTA DE TUTORES ---");
+            taSaida.append("--- LISTA DE TUTORES ---\n\n");
             for(Tutor t: controle.getListaTutor()){
                 taSaida.append(t.toString()+"\n");
             }

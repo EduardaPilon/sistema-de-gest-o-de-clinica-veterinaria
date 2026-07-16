@@ -18,7 +18,6 @@ public class EditarVeterinario extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditarVeterinario.class.getName());
     Veterinario veterinario;
     Controle controle;
-    private ArrayList<String> listaTelefone;
     /**
      * Creates new form EdiatraVeteriinario
      */
@@ -213,8 +212,8 @@ public class EditarVeterinario extends javax.swing.JDialog {
             return;
         }
         
-        listaTelefone.add(telefone);
-        taSaida.append(telefone + "\n");
+        veterinario.getTelefones().add(telefone);
+        atualizarListaTelefonica();
         tfTelefone.setText("");
         tfTelefone.requestFocus();
 

@@ -27,7 +27,6 @@ public class AdicionarVeterinario extends javax.swing.JDialog {
         tfCrmv.setText("");
         tfTelefone.setText("");
         taSaida.setText("");
-        listaTelefone.clear();  
     }
     /**
      * Creates new form AdicionarProfissional

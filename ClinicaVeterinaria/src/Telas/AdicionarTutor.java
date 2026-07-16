@@ -103,9 +103,22 @@ public class AdicionarTutor extends javax.swing.JDialog {
        
         String nome = tfNome.getText();
         String telefone = tfTelefone.getText();
-        Tutor t = new Tutor(nome, telefone);
-        JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         
+        if (nome.isEmpty() || telefone.isEmpty()) {
+                JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Aviso",JOptionPane.WARNING_MESSAGE);
+                return;
+        }
+
+        try{
+            Tutor t = new Tutor(nome, telefone);
+            controle.addTutor(t);
+
+            JOptionPane.showMessageDialog(this,"Tutor cadastrado com sucesso!");
+            this.dispose();
+
+        }catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(this,e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }
        
     }//GEN-LAST:event_btnSalvar1ActionPerformed
 

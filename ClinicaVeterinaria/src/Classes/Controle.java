@@ -75,12 +75,16 @@ public class Controle {
     }
     
     public void addTutor(Tutor t){
-        ListaTutor.add(t);
-        
+        Tutor aux = buscarTutor(t.getNome());
+
+        if(aux == null){
+            ListaTutor.add(t);
+            return;
+        }
+        throw new IllegalArgumentException("Já existe um tutor com esse nome.");
+
     }
-    
- 
-             
+               
    //Buscar-------------------------------------------------------------------------
     
     public Profissional buscarProfissional(int cod){
@@ -103,7 +107,7 @@ public class Controle {
     
     public Tutor buscarTutor(String nome){
         for(Tutor t: ListaTutor){
-            if(t.getNome()== nome){
+            if(t.getNome().equals(nome)){
                 return t;
             }
         }
