@@ -43,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
         btnVeterinario.addActionListener(this::btnVeterinarioActionPerformed);
 
         jButton1.setText("TUTOR");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,6 +88,11 @@ public class Principal extends javax.swing.JFrame {
         GerenciarProfissional GerenciarProfissional = new GerenciarProfissional(this, true, controle);
         GerenciarProfissional.setVisible(true);
     }//GEN-LAST:event_btnVeterinarioActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        GerenciarTutor gerenciarTutor = new GerenciarTutor(this, true, controle);
+        gerenciarTutor.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -19,6 +19,7 @@ public class Controle {
     public Controle() {
         this.listaProfissional = new ArrayList<>();
         listaAnimal = new ArrayList<>();
+        ListaTutor = new ArrayList<>();
     }
 
     
